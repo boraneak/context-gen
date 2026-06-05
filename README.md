@@ -28,6 +28,7 @@ Then add your API key permanently:
 ```bash
 # Add to ~/.zshrc or ~/.bashrc
 export GEMINI_API_KEY=your_key_here
+export PATH="$HOME/.local/bin:$PATH"
 ```
 
 ```bash
@@ -50,6 +51,7 @@ It will:
 2. Send to Gemini Flash (free)
 3. Show you a preview
 4. Ask to confirm before writing `CONTEXT.md`
+5. Ask what you're working on — injects it as `## Next Task` automatically
 
 ## When to use
 
@@ -59,13 +61,13 @@ It will:
 
 ## The only manual step
 
-After generation, open `CONTEXT.md` and fill in:
+When you run `context-gen`, it will ask:
 
-```markdown
-## Next Task
-⬅️ What are you working on RIGHT NOW?
+```
+📝 What are you working on right now? (press Enter to skip):
 ```
 
+Type your current task — it gets injected into `CONTEXT.md` automatically.
 This is the one thing Gemini can't know — your intention.
 
 ## Multi-agent rotation strategy
@@ -78,4 +80,4 @@ This is the one thing Gemini can't know — your intention.
 | Mistral Le Chat | Very generous | Fast code, no daily limit feel |
 | Phind | Free | Dev-focused search + code |
 
-When one cuts you off → update `## Next Task` in `CONTEXT.md` → paste it to the next agent → keep building.
+When one cuts you off → run `context-gen` → paste `CONTEXT.md` to the next agent → keep building.
